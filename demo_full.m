@@ -17,7 +17,7 @@ clear; clc; close all;
 addpath('src')
 
 
-for i = 1:2
+for i = 1:10
     [obj_configs,optimization_opt]=generate_config('is_spatial',1,... % =1 using the SBN, =0 using the CBN.
                                                    'max_time', 3600*7,... % max running time (in seconds).
                                                    'n_check',10,... % results recycling checking interval. if changed to 1e6, turn off recycling.
