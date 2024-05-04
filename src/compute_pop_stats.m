@@ -1,11 +1,21 @@
-function [fa_percentshared100, fa_normevals100, fa_dshared100] = compute_pop_stats(sampling_inds, re, n_neuron, Tw, dim_method)
-%Compute the population statistics of the given spike count matrix
+function [fa_percentshared, fa_normevals, fa_dshared] = compute_pop_stats(sampling_inds, re, n_neuron, Tw, dim_method)
+%% Compute the population statistics of the given spike count matrix
+%% Input
+%%     sampling_inds: [number of samplings, number of sampling neurons],
+%%     re: [number of neurons, number of bins], spike count matrix
+%% 	   n_neuron: int, number of sampling neurons 
+%%	   Tw: int, spike count window size
+%%     dim_method: cross-validation method, see below for the different cv methods.
+%% Output
+%%      fa_percentshared: float; percent shared var
+%%      fa_normevals: [n_neuron], eigenspectrum
+%%      fa_dshared: int, dim of shared variance, can be float after averaging
 
 
 n_samples=size(sampling_inds,1);
-fa_percentshared100=zeros(n_samples,1);
-fa_normevals100=zeros(n_samples,n_neuron);
-fa_dshared100=zeros(n_samples,1);
+fa_percentshared=zeros(n_samples,1);
+fa_normevals=zeros(n_samples,n_neuron);
+fa_dshared=zeros(n_samples,1);
 		
 for k =1:n_samples
 	tmp = re(sampling_inds(k,:),:);
@@ -26,36 +36,37 @@ for k =1:n_samples
 
 	if n_latent==0
 		% if n_latent =0, no shared latents
-		fa_percentshared100(k)=0;
-		fa_normevals100(k,1:size(tmp,1))=repelem(0,size(tmp,1));
-		fa_dshared100(k)=0;
+		fa_percentshared(k)=0;
+		fa_normevals(k,1:size(tmp,1))=repelem(0,size(tmp,1));
+		fa_dshared(k)=0;
 	else 
 		try
 			[estParams, ~]=fastfa(tmp,n_latent);
 			[percentshared, d_shared, normevals] = compute_shared(estParams, 0.95,0);
-			fa_percentshared100(k)=percentshared;
-			fa_normevals100(k,1:size(tmp,1))=normevals(1:size(tmp,1));
-			fa_dshared100(k)=d_shared;
+			fa_percentshared(k)=percentshared;
+			fa_normevals(k,1:size(tmp,1))=normevals(1:size(tmp,1));
+			fa_dshared(k)=d_shared;
 		catch
 			if rcond(cov(tmp')) <1e-8
 				warning('Singularity in FA')
-				fa_percentshared100(k)=1;
-				fa_normevals100(k,1:size(tmp,1))=NaN(1,size(tmp,1));
-				fa_dshared100(k)=1;
+				fa_percentshared(k)=1;
+				fa_normevals(k,1:size(tmp,1))=NaN(1,size(tmp,1));
+				fa_dshared(k)=1;
 			else
 				warning('Something wrong in FA')
-				fa_percentshared100(k)=NaN;
-				fa_normevals100(k,1:size(tmp,1))=NaN(1,size(tmp,1));
-				fa_dshared100(k)=NaN;
+				fa_percentshared(k)=NaN;
+				fa_normevals(k,1:size(tmp,1))=NaN(1,size(tmp,1));
+				fa_dshared(k)=NaN;
 			end
 		end
 	end
 end
 
-fa_percentshared100=mean(fa_percentshared100,1);
-fa_normevals100=mean(fa_normevals100,1);
-fa_dshared100=mean(fa_dshared100,1);
+fa_percentshared=mean(fa_percentshared,1);
+fa_normevals=mean(fa_normevals,1);
+fa_dshared=mean(fa_dshared,1);
 end
+
 
 function [n_latent] = PA_dim(tmp)
 	tmp=tmp';

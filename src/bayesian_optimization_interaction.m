@@ -1,6 +1,7 @@
 function [x_train,y_train,y_feasibility,optimization_time] = bayesian_optimization_interaction2(func,optimization_opt,obj_configs)
 rng shuffle;
-%Bayesian optimization while taking into account of parameter interactions (taui/taue and the determinant of the Jr matrix) for fitting GPs.
+%% Bayesian optimization while taking into account of parameter interactions (taui/taue and the determinant of the Jr matrix) for fitting GPs.
+%% Same input/output format as in bayesian_optimization.
 
 %initialization
 x_range=optimization_opt.x_range;

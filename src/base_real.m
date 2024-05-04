@@ -1,10 +1,11 @@
 function [base_name] = base_real(real_data_name,base_name,filename,top_n,sort_mode,stats_weights,is_sort)
+%%[Deprecated] Function for loading previously-evaluated simulations.
 
 
 try 
 	load(strcat('./q/',filename,'_base.mat'));
 	base_name=strcat('./q/',filename,'_base.mat');
-	warning('base exists!!!!!!!!!!!!!!!!!!!!!!!')
+	warning('base already exists')
 
 catch
 
@@ -14,10 +15,10 @@ catch
 	rate1_cost=stats_weights(1)*(full_stats.rate1-true_statistics.rate_mean).^2/true_statistics.rate_var;
 	FanoFactor1_cost = stats_weights(2)*(full_stats.FanoFactor1-true_statistics.fano_mean).^2/true_statistics.fano_var;
 	mean_corr1_cost = stats_weights(3)*(full_stats.mean_corr1-true_statistics.mean_corr_mean).^2/true_statistics.mean_corr_var;
-	fa_percentshared100_cost = stats_weights(4)*(full_stats.fa_percentshared100-true_statistics.fa_percent_mean).^2/true_statistics.fa_percent_var;
-	fa_dshared100_cost = stats_weights(5)*(full_stats.fa_dshared100-true_statistics.fa_dim_mean).^2/true_statistics.fa_dim_var;
-	fa_normevals100_cost=stats_weights(6)*vecnorm(full_stats.fa_normevals100-true_statistics.fa_normeval_mean,2,2).^2/true_statistics.fa_normeval_var;
-	full_stats{:,1}=mean([rate1_cost,FanoFactor1_cost,mean_corr1_cost,fa_percentshared100_cost,fa_dshared100_cost,fa_normevals100_cost],2);
+	fa_percentshared_cost = stats_weights(4)*(full_stats.fa_percentshared-true_statistics.fa_percent_mean).^2/true_statistics.fa_percent_var;
+	fa_dshared_cost = stats_weights(5)*(full_stats.fa_dshared-true_statistics.fa_dim_mean).^2/true_statistics.fa_dim_var;
+	fa_normevals_cost=stats_weights(6)*vecnorm(full_stats.fa_normevals-true_statistics.fa_normeval_mean,2,2).^2/true_statistics.fa_normeval_var;
+	full_stats{:,1}=mean([rate1_cost,FanoFactor1_cost,mean_corr1_cost,fa_percentshared_cost,fa_dshared_cost,fa_normevals_cost],2);
 
 
 

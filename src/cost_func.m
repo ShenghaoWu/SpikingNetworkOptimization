@@ -98,8 +98,8 @@ if save_stats
 	surrogate_time=toc;
 	full_stats_time=0;
 	execution_time=table(surrogate_time,full_stats_time);
-	[rate1,var1,FanoFactor1,mean_corr1,fa_percentshared100,fa_dshared100,fa_normevals100] = nan_stats(n_neuron);
-	full_stats_to_record = generate_full_stats_to_record(statistics_group,objective,rate1,var1,FanoFactor1,mean_corr1,fa_percentshared100,fa_dshared100,fa_normevals100);
+	[rate1,var1,FanoFactor1,mean_corr1,fa_percentshared,fa_dshared,fa_normevals] = nan_stats(n_neuron);
+	full_stats_to_record = generate_full_stats_to_record(statistics_group,objective,rate1,var1,FanoFactor1,mean_corr1,fa_percentshared,fa_dshared,fa_normevals);
 	if warning_flag
 		try
 			surrogate_stats=table(cost_surrogate,rate0,var0,FanoFactor0);
@@ -165,7 +165,7 @@ try
     end
 
     if contains(statistics_group,'3')
-		[fa_percentshared100, fa_normevals100, fa_dshared100] = compute_pop_stats(sampling_inds, re, n_neuron, Tw, dim_method);
+		[fa_percentshared, fa_normevals, fa_dshared] = compute_pop_stats(sampling_inds, re, n_neuron, Tw, dim_method);
     end
 
 	switch metric_norm
@@ -174,9 +174,9 @@ try
 	                    true_statistics.default_weights(2)*(FanoFactor1-true_statistics.fano_mean)^2/true_statistics.fano_var]);		
 		pair_obj=true_statistics.default_weights(3)*(mean_corr1-true_statistics.mean_corr_mean)^2/true_statistics.mean_corr_var;		
 		if contains(statistics_group,'3')
-			pop_obj=mean([true_statistics.default_weights(4)*(fa_percentshared100-true_statistics.fa_percent_mean)^2/true_statistics.fa_percent_var,...
-			                    true_statistics.default_weights(5)*(fa_dshared100-true_statistics.fa_dim_mean)^2/true_statistics.fa_dim_var,...
-			                    true_statistics.default_weights(6)*norm(fa_normevals100-true_statistics.fa_normeval_mean,2)^2/true_statistics.fa_normeval_var]);		
+			pop_obj=mean([true_statistics.default_weights(4)*(fa_percentshared-true_statistics.fa_percent_mean)^2/true_statistics.fa_percent_var,...
+			                    true_statistics.default_weights(5)*(fa_dshared-true_statistics.fa_dim_mean)^2/true_statistics.fa_dim_var,...
+			                    true_statistics.default_weights(6)*norm(fa_normevals-true_statistics.fa_normeval_mean,2)^2/true_statistics.fa_normeval_var]);		
 		end
 
 	case 'L1'
@@ -184,9 +184,9 @@ try
 	                    true_statistics.default_weights(2)*abs(FanoFactor1-true_statistics.fano_mean)/sqrt(true_statistics.fano_var)]);		
 		pair_obj=true_statistics.default_weights(3)*abs(mean_corr1-true_statistics.mean_corr_mean)/sqrt(true_statistics.mean_corr_var);		
 		if contains(statistics_group,'3')
-			pop_obj=mean([true_statistics.default_weights(4)*abs(fa_percentshared100-true_statistics.fa_percent_mean)/sqrt(true_statistics.fa_percent_var),...
-			                    true_statistics.default_weights(5)*abs(fa_dshared100-true_statistics.fa_dim_mean)/sqrt(true_statistics.fa_dim_var),...
-			                    true_statistics.default_weights(6)*norm(fa_normevals100-true_statistics.fa_normeval_mean,1)/sqrt(true_statistics.fa_normeval_var)]);		
+			pop_obj=mean([true_statistics.default_weights(4)*abs(fa_percentshared-true_statistics.fa_percent_mean)/sqrt(true_statistics.fa_percent_var),...
+			                    true_statistics.default_weights(5)*abs(fa_dshared-true_statistics.fa_dim_mean)/sqrt(true_statistics.fa_dim_var),...
+			                    true_statistics.default_weights(6)*norm(fa_normevals-true_statistics.fa_normeval_mean,1)/sqrt(true_statistics.fa_normeval_var)]);		
 		end
 	end  
 	
@@ -217,7 +217,7 @@ end
 
 if save_stats
 	
-		[full_stats_to_record] = generate_full_stats_to_record(statistics_group,objective,rate1,var1,FanoFactor1,mean_corr1,fa_percentshared100,fa_dshared100,fa_normevals100);
+		[full_stats_to_record] = generate_full_stats_to_record(statistics_group,objective,rate1,var1,FanoFactor1,mean_corr1,fa_percentshared,fa_dshared,fa_normevals);
 		full_stats_time=toc;
 		execution_time=table(surrogate_time,full_stats_time);
 		surrogate_stats=table(cost_surrogate,rate0,var0,FanoFactor0);

@@ -22,10 +22,10 @@ true_statistics= obj_configs.true_statistics;
 rate1_cost=true_statistics.default_weights(1)*(full_stats.rate1-true_statistics.rate_mean).^2/true_statistics.rate_var;
 FanoFactor1_cost = true_statistics.default_weights(2)*(full_stats.FanoFactor1-true_statistics.fano_mean).^2/true_statistics.fano_var;
 mean_corr1_cost = true_statistics.default_weights(3)*(full_stats.mean_corr1-true_statistics.mean_corr_mean).^2/true_statistics.mean_corr_var;
-fa_percentshared100_cost = true_statistics.default_weights(4)*(full_stats.fa_percentshared100-true_statistics.fa_percent_mean).^2/true_statistics.fa_percent_var;
-fa_dshared100_cost = true_statistics.default_weights(5)*(full_stats.fa_dshared100-true_statistics.fa_dim_mean).^2/true_statistics.fa_dim_var;
-fa_normevals100_cost=true_statistics.default_weights(6)*vecnorm(full_stats.fa_normevals100-true_statistics.fa_normeval_mean,2,2).^2/true_statistics.fa_normeval_var;
-full_stats{:,1}=mean([rate1_cost,FanoFactor1_cost,mean_corr1_cost,fa_percentshared100_cost,fa_dshared100_cost,fa_normevals100_cost],2);
+fa_percentshared_cost = true_statistics.default_weights(4)*(full_stats.fa_percentshared-true_statistics.fa_percent_mean).^2/true_statistics.fa_percent_var;
+fa_dshared_cost = true_statistics.default_weights(5)*(full_stats.fa_dshared-true_statistics.fa_dim_mean).^2/true_statistics.fa_dim_var;
+fa_normevals_cost=true_statistics.default_weights(6)*vecnorm(full_stats.fa_normevals-true_statistics.fa_normeval_mean,2,2).^2/true_statistics.fa_normeval_var;
+full_stats{:,1}=mean([rate1_cost,FanoFactor1_cost,mean_corr1_cost,fa_percentshared_cost,fa_dshared_cost,fa_normevals_cost],2);
 
 if obj_configs.is_spatial
 	x_train=paras{:,:};

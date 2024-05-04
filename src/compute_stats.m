@@ -1,5 +1,26 @@
 function [rate0, var0, FanoFactor0, mean_corr0, unstable_flag, sampling_inds, re,low_rate_flag] = compute_stats(s1,Ic1,Tw,Tburn,n_sampling, n_neuron, check_stability) 
-%Wrapper for computing the single-neuron and pairwise statistics of the given spike trains
+%% Wrapper function for computing the single-neuron and pairwise statistics of the given spike trains
+%% Input
+%%     s1: [number spikes, 2], spike trains
+%%     Ic1: [number of E nerons], indices of the E neurons in the recurrent layer
+%%     Tw: int, spike count window size
+%%     Tburn: int, length of spike trains to be burnt (for remove transcients)
+%%     n_sampling: int, number of neuron samplings for averaging the activity stats
+%%     n_neuron: int, number of neurons per sampling
+%%     check_stability: {0,1}, check if the spiking activity is stable (see Feasibility constraints in Methods)
+
+
+%% Output
+%%      rate0: float;  mean firing rate
+%%      var0: float, mean variance
+%%      FanoFactor0: float, mean Fanofactor
+%%      mean_corr0: float, mean rsc
+%%      unstable_flag: {0,1}, if the spiking activity is stable
+%%      sampling_inds: [number of samplings, n_neuron], neuron sampling indices
+%%      re: [number of neurons, number of bins], spike count matrix
+%%      low_rate_flag: {0,1}, if the spike trains have extreme firing rate
+
+
 
 low_rate_flag=0;
 unstable_flag=0;

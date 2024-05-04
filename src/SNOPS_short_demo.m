@@ -160,7 +160,7 @@ catch
 
         ax4 = nexttile;
         hold(ax4,'on')
-        scatter(0.01,100*tt.fa_percentshared100,35,'black','filled')
+        scatter(0.01,100*tt.fa_percentshared,35,'black','filled')
         scatter(0,100*ts.fa_percent_mean,35,'red','filled')
         xlabel('$\%_{sh}$','Interpreter','latex')
         set(ax4,'XTick',[])
@@ -168,7 +168,7 @@ catch
 
         ax5 = nexttile;
         hold(ax5,'on')
-        scatter(0.01,tt.fa_dshared100,35,'black','filled')
+        scatter(0.01,tt.fa_dshared,35,'black','filled')
         scatter(0,ts.fa_dim_mean,35,'red','filled')
         xlabel('$d_{sh}$','Interpreter','latex')
         set(ax5,'XTick',[])
@@ -176,9 +176,9 @@ catch
 
         ax6 = nexttile([1,3]);
         hold(ax6,'on')
-        scatter(0.01+(1:3),tt.fa_normevals100(1:3),35,'black','filled')
+        scatter(0.01+(1:3),tt.fa_normevals(1:3),35,'black','filled')
         scatter(1:3,ts.fa_normeval_mean(1:3),35,'red','filled')
-        plot(0.01+(1:3),tt.fa_normevals100(1:3),'LineWidth',2.5,'Color','black')
+        plot(0.01+(1:3),tt.fa_normevals(1:3),'LineWidth',2.5,'Color','black')
         plot(1:3,ts.fa_normeval_mean(1:3),'LineWidth',2.5,'Color','red')
         xlabel('$es$ (Top 3 modes)' ,'Interpreter','latex')
         legend('best','target','Location','northeast')
@@ -225,7 +225,7 @@ catch
         disp(strcat('current cost (log)=',string(log(y_train(i))),'; || current best (log)=',string(log(nanmin(y_train)))))
         disp('--------------------------------------------------------------------------------')
         disp(strcat('firing rate: ', string(tt.rate1),' || Fano: ', string(tt.FanoFactor1),' || rsc: ', string(tt.mean_corr1)))
-        disp(strcat('percent shared: ', string(100*tt.fa_percentshared100),' || dshared: ', string(tt.fa_dshared100),' || eigenspectrum(top3): ', strjoin(string(tt.fa_normevals100(1:3)),',')))
+        disp(strcat('percent shared: ', string(100*tt.fa_percentshared),' || dshared: ', string(tt.fa_dshared),' || eigenspectrum(top3): ', strjoin(string(tt.fa_normevals(1:3)),',')))
 
     else 
         disp(strcat('iteration ', {' '}, string(i)))
@@ -359,7 +359,7 @@ for kk=1:max_iter-1
 
         ax4 = nexttile;
         hold(ax4,'on')
-        scatter(0.01,100*tt.fa_percentshared100,35,'black','filled')
+        scatter(0.01,100*tt.fa_percentshared,35,'black','filled')
         scatter(0,100*ts.fa_percent_mean,35,'red','filled')
         xlabel('$\%_{sh}$','Interpreter','latex')
         set(ax4,'XTick',[])
@@ -367,7 +367,7 @@ for kk=1:max_iter-1
 
         ax5 = nexttile;
         hold(ax5,'on')
-        scatter(0.01,tt.fa_dshared100,35,'black','filled')
+        scatter(0.01,tt.fa_dshared,35,'black','filled')
         scatter(0,ts.fa_dim_mean,35,'red','filled')
         xlabel('$d_{sh}$','Interpreter','latex')
         set(ax5,'XTick',[])
@@ -375,9 +375,9 @@ for kk=1:max_iter-1
 
         ax6 = nexttile([1,3]);
         hold(ax6,'on')
-        scatter(0.01+(1:3),tt.fa_normevals100(1:3),35,'black','filled')
+        scatter(0.01+(1:3),tt.fa_normevals(1:3),35,'black','filled')
         scatter(1:3,ts.fa_normeval_mean(1:3),35,'red','filled')
-        plot(0.01+(1:3),tt.fa_normevals100(1:3),'LineWidth',2.5,'Color','black')
+        plot(0.01+(1:3),tt.fa_normevals(1:3),'LineWidth',2.5,'Color','black')
         plot(1:3,ts.fa_normeval_mean(1:3),'LineWidth',2.5,'Color','red')
         xlabel('$es$ (Top 3 modes)' ,'Interpreter','latex')
         legend('best','target','Location','northeast')
@@ -420,7 +420,7 @@ for kk=1:max_iter-1
         disp(strcat('current cost (log)=',string(log(y_train(end))),'; || current best (log)=',string(log(nanmin(y_train)))))
         disp('--------------------------------------------------------------------------------')
         disp(strcat('firing rate: ', string(tt.rate1),' || Fano: ', string(tt.FanoFactor1),' || rsc: ', string(tt.mean_corr1)))
-        disp(strcat('percent shared: ', string(100*tt.fa_percentshared100),' || d shared: ', string(tt.fa_dshared100),' || eigenspectrum(top3): ', strjoin(string(tt.fa_normevals100(1:3)),',')))
+        disp(strcat('percent shared: ', string(100*tt.fa_percentshared),' || d shared: ', string(tt.fa_dshared),' || eigenspectrum(top3): ', strjoin(string(tt.fa_normevals(1:3)),',')))
 
     else 
         disp(strcat('iteration ', {' '}, string(size(x_train,1))))
@@ -446,7 +446,7 @@ disp('--------------------------------------------------------------------------
 disp(strcat('best cost =',string(log(nanmin(y_train)))))
 disp('--------------------------------------------------------------------------------')
 disp(strcat('firing rate: ', string(tt.rate1),' || Fano: ', string(tt.FanoFactor1),' || rsc: ', string(tt.mean_corr1)))
-disp(strcat('percent shared: ', string(100*tt.fa_percentshared100),' || d shared: ', string(tt.fa_dshared100),' || eigenspectrum(top3): ', strjoin(string(tt.fa_normevals100(1:3)),',')))
+disp(strcat('percent shared: ', string(100*tt.fa_percentshared),' || d shared: ', string(tt.fa_dshared),' || eigenspectrum(top3): ', strjoin(string(tt.fa_normevals(1:3)),',')))
 
 if is_plot
         pause(3)
@@ -487,7 +487,7 @@ if is_plot
 
         ax4 = nexttile;
         hold(ax4,'on')
-        scatter(0.01,100*tt.fa_percentshared100,35,'black','filled')
+        scatter(0.01,100*tt.fa_percentshared,35,'black','filled')
         scatter(0,100*ts.fa_percent_mean,35,'red','filled')
         xlabel('$\%_{sh}$','Interpreter','latex')
         ylim([0,100])
@@ -496,7 +496,7 @@ if is_plot
 
         ax5 = nexttile;
         hold(ax5,'on')
-        scatter(0.01,tt.fa_dshared100,35,'black','filled')
+        scatter(0.01,tt.fa_dshared,35,'black','filled')
         scatter(0,ts.fa_dim_mean,35,'red','filled')
         xlabel('$d_{sh}$','Interpreter','latex')
         set(ax5,'XTick',[])
@@ -504,9 +504,9 @@ if is_plot
 
         ax6 = nexttile([1,3]);
         hold(ax6,'on')
-        scatter(0.01+(1:3),tt.fa_normevals100(1:3),35,'black','filled')
+        scatter(0.01+(1:3),tt.fa_normevals(1:3),35,'black','filled')
         scatter(1:3,ts.fa_normeval_mean(1:3),35,'red','filled')
-        plot(0.01+(1:3),tt.fa_normevals100(1:3),'LineWidth',2.5,'Color','black')
+        plot(0.01+(1:3),tt.fa_normevals(1:3),'LineWidth',2.5,'Color','black')
         plot(1:3,ts.fa_normeval_mean(1:3),'LineWidth',2.5,'Color','red')
         xlabel('$es$ (Top 3 modes)' ,'Interpreter','latex')
         legend('best','target','Location','northeast')

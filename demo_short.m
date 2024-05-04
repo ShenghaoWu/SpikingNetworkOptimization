@@ -5,6 +5,7 @@
 %% (the percent shared variance, dimensionality of the shared variance, and
 %% the eigenspectrum of the shared variance), to compare model spiking
 %% activity to that of the target.
+%% Make sure you cd to /SpikingNetworkOptimization .
 %% The algorithm should return a parameter set with a close match of the
 %% groundtruth activity statistics after around 15 iterations (~10 mins on
 %% a desktop). For a more stable customization process, we recommend
