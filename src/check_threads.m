@@ -1,18 +1,16 @@
 function [x_star,y_star,is_better]=check_threads(x_train,y_train,root,stats_name,true_statistics) 
-%% Function for results recycling.
-%% Input
-%%		x_train: [number of samples, number of parameters]
-%%		y_train: [number of samples, 1]
-%%		root: string; folder containing logging files 
-%% 		stats_name: string; name of the stats logging files
-%%		true_statistics: table; target statistics
-%% Output
-%%       x_star:  [1, number of parameters] the potential optimal parmaeter set, if exists. 
-%%       y_star:  [1] cost of the potential optimal parmaeter set, if exists.
-%%       is_better:  {0,1}, if the potential optimal parmaeter exists.
-%%  This function  will load all the stats log files of the same name patterns (middle_str) from 1 to nmax
-%%  and compute the cost based on saved activity statistics and the target stats (true_statistics).
+%% Function for results recycling. This function  will load all the stats log files of the same name patterns (middle_str) from 1 to nmax and compute the cost based on saved activity statistics and the target stats (true_statistics).
 %%	If we encounter a network simulation yielding lower cost than the current best, return it.
+%   -Input
+%		x_train: [number of samples, number of parameters]
+%		y_train: [number of samples, 1]
+%		root: string; folder containing logging files 
+% 		stats_name: string; name of the stats logging files
+%		true_statistics: table; target statistics
+%   -Output
+%       x_star:  [1, number of parameters] the potential optimal parmaeter set, if exists. 
+%       y_star:  [1] cost of the potential optimal parmaeter set, if exists.
+%       is_better:  {0,1}, if the potential optimal parmaeter exists.
 
 
 x_star=nan;

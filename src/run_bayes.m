@@ -1,9 +1,14 @@
 function run_bayes(obj_configs, optimization_opt, optimization_algo)
-%Entry point for the SNOPS function.
-%Inputs are the configuration structs from generate_config.m
-%optimization_algo: 1:use BO (SNOPS default); 2: use accelerated random search; 
-% 					3: use the typical random search (without feasibility constraints and intensification)
-%					4: use BO with interaction terms (during GP fitting)
+%% Entry point for the SNOPS customization.
+%   -Input
+%		obj_configs: struct, configurations for the network simulation
+%		optimization_opt: struct, configurations for the Bayesian optimization
+%       optimization_algo: int, 1:use BO (SNOPS default); 
+%                               2: use accelerated random search;
+%                               3: use the typical random search (without feasibility constraints and intensification);
+%                               4: use BO with interaction terms (during GP
+%                               fitting).
+
 
 
 %Random seed for running on cluster

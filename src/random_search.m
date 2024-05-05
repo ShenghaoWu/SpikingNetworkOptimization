@@ -1,5 +1,19 @@
 function [x_train,y_train,y_feasibility,optimization_time] = random_search(func,optimization_opt,obj_configs)
-% Customization with accelerated random search
+%% Optimization with accelerated random search
+%   -Input
+% 		func: function, wrapper for the cost function
+%		optimization_opt: struct, configurations for the Bayesian optimization
+%		obj_configs: struct, configurations for the network simulation
+%
+%   -Output
+%		x_train: [number of iterations, number of params], trace of the
+%		parameter sets
+%       y_train: [number of iterations], trace of the cost
+%       y_feasibility: [number of iterations], trace of the feasibility
+%       constraints
+%       optimization_time: [number of iterations], trace of the iteration
+%       time
+
 rng shuffle;
 %initialization
 x_range=optimization_opt.x_range;

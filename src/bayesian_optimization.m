@@ -1,13 +1,20 @@
 function [x_train,y_train,y_feasibility,optimization_time] = bayesian_optimization(func,optimization_opt,obj_configs)
 %% Main optimization function for SNOPS using Bayesian optimization
-%% Input
-%% 		func: wrapper for the cost function
-%%		optimization_opt: configurations for the Bayesian optimization
-%%		obj_configs: configurations for the network simulation
-%%
-%% Return
-%%		Optimization trace (x_train, y_train,y_feasibility) as well as the elapsed time (optimization_time)
-%%
+%   -Input
+% 		func: function, wrapper for the cost function
+%		optimization_opt: struct, configurations for the Bayesian optimization
+%		obj_configs: struct, configurations for the network simulation
+%
+%   -Output
+%		x_train: [number of iterations, number of params], trace of the
+%		parameter sets
+%       y_train: [number of iterations], trace of the cost
+%       y_feasibility: [number of iterations], trace of the feasibility
+%       constraints
+%       optimization_time: [number of iterations], trace of the iteration
+%       time
+
+
 
 rng shuffle;
 

@@ -1,5 +1,15 @@
 function [optimization_opt,obj_configs] = intensification_vanilla(base_name,obj_configs,optimization_opt)
-%%% return obj_config and optimization_opt, update stats file 
+%% Intensification for the initial base file, only if the base file exists. For the random search method (see intensification.m for BO).
+%   -Input
+% 		base_name: string, filename for the previously generated network
+% 		simulations.
+%		obj_configs: struct, configurations for the network simulation
+%		optimization_opt: struct, configurations for the Bayesian optimization
+
+%   -Output
+%		optimization_opt: struct, updated configurations for the Bayesian optimization
+%		obj_configs: struct, updated configurations for the network simulation
+
 
 load(base_name)
 paras_=paras;

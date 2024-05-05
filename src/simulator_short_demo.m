@@ -1,17 +1,18 @@
 function [spike_train] =  simulator_short_demo(input_para,T)
 
+%% Description: Function wrapper for the SNN simulator. This function wraps the actual simulation code, spatial_nn_simulation_weight.m, for the demonstration purpose in demo_short.m.
+%% If you want to customize your own network model, wrap your simulator with a function of the exact same input/output formats of this function.
+%% If you want to customize a different set of parameters for SBN, modify the parameter range and assign the named parameter with corresponding entry of input_para.
 
-% Description: Function wrapper for the Spatial Balanced Network.
+%   Input
 %
-% Arguments:
+%     input_para: [number of parameters to customize], parameter set to
+%     simulate the network
+%     T: int, network model simulation length (in ms).
+
+%   Output
+%     spike_train -- [2, number of spikes]. The first row is time (in ms), the second row is the neuron id. The first 2500 neurons are E neurons, the rest are I neurons.
 %
-%     input_para --float, [number of parameters to customize]
-%     T -- int; network model simulation length (in ms).
-% Return:
-%     spike_train -- int [2, number of spikes]. The first row is time (in ms), the second row is the neuron id. The first 2500 neurons are E neurons, the rest are I neurons.
-%
-% If you want to customize your own network model, wrap your simulator with a function of the exact same input/output formats of this function.
-% If you want to customize a different set of parameters for SBN, modify the parameter range and assign the named parameter with corresponding entry of input_para.
 
 taudsynI=input_para(1);
 mean_sigmaRRIs = input_para(2);

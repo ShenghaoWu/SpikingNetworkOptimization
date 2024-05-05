@@ -1,6 +1,11 @@
 function [Ic1] = sample_e_neurons(s1,Ne1,is_simulation)
-%Get indices for the recurrent E neurons to compute activity statistics
-%Would always set is_simulation=1 since no periodic boundary condition
+%% Obtain indices for the recurrent E neurons to compute activity statistics
+%   -Input
+%     s1: [number spikes, 2], spike trains
+%     Ne1: int, number of E neurons in the recurrent layer per side (total
+%     number if Ne1^2)
+%     is_simulation: {0,1}, if = 1, does not account for the periodic boundary
+%     condition for sampling neurons.
 
 if  is_simulation   
 	Ic1=transpose(unique(s1(2,:)));

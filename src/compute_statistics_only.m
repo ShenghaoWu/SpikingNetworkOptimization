@@ -1,5 +1,17 @@
 function [rate1,var1, FanoFactor1, mean_corr1]=compute_statistics_only(re1_s) 
-%Compute the rate, var, Fano, and rsc of the spike count matrix.
+%% Compute the rate, var, Fano, and rsc of the spike count matrix.
+
+%   -Input
+%      re1_s: [number of neurons, number of bins], spike count matrix
+%      
+%   -Output
+%      rate1: float;  mean firing rate
+%      var1: float, mean variance
+%      FanoFactor1: float, mean Fanofactor
+%      mean_corr1: float, mean rsc
+
+
+
 rng shuffle;
 COV=cov([re1_s]');
 Var=diag(COV);

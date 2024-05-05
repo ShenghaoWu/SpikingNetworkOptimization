@@ -1,8 +1,13 @@
 function sx=genXspk(p,Nx,T)
-% generate spike trains of Layer 1
-% p: param struct 
-% Nx: # of neurons in Layer 1
-% T: total simulation time 
+%% Generate spike trains of Layer 1
+%   -Input
+%       p: param struct 
+%       Nx: # of neurons in Layer 1
+%       T: total simulation time 
+%   -Output
+%       sx: ffwd spike trains.
+
+
 switch p.stim_type
     case 'LocalCorr'
         cx=p.cx; 

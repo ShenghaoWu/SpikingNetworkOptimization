@@ -1,5 +1,14 @@
 function [objective] = cost_func(x, is_surrogate, obj_configs)
-%Cost function for the SNN simulation 
+%% Cost function for the SNN simulation
+%   -Input
+%      x: table, parameter sets for the simulation
+%      is_surrogate: {0,1}, if use a short simulation to determine
+%      feasibility
+%      obj_configs: struct, configurations for the network simulation
+
+%   -Output
+%      objective: float; cost of x
+
 
 %if is_spatial is false, send sigmas to infinity and convert a SBN to CBN.
 if ~obj_configs.is_spatial

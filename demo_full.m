@@ -1,16 +1,17 @@
-%% This script demonstrates the customization of a SBN to 10 example simulation 
-%% datasets generated  by the SBN with varying parameter sets.
-%% Make sure you cd to /SpikingNetworkOptimization, 
-%% then execute the following scripts to generate the config files and start SNOPS. 
-%% For details on the customization configurations, please refer to the documentation of generate_config.m
-%% The code below assumes you are running on a machine with at least 10 CPU cores, 
-%% as it will spawn  10 batch jobs in the background and use the results recycling mechanism 
-%% which routinely checks the saved results from the concurrent threads. 
-%% Expect 7 days to finish the full customization (slurm/screen/tmux recommended), but you may
-%% be able to obtain reasonable results for some of the target datasets after  48-72 hours. 
-%% If you do not want to use results recycling, simply change n_check to 1e6, which corresponds to 
-%% the routine interval for the recycling. This may possibly yield slower convergence or suboptimal results.
-%% You can load the log file under the results folder with the script below after or during the customization.
+%% Full demonstration of SNOPS (running time ~ 168 hours)
+% This script demonstrates the customization of a SBN to 10 example simulation 
+% datasets generated  by the SBN with varying parameter sets.
+% Make sure you cd to /SpikingNetworkOptimization, 
+% then execute the following scripts to generate the config files and start SNOPS. 
+% For details on the customization configurations, please refer to the documentation of generate_config.m
+% The code below assumes you are running on a machine with at least 10 CPU cores, 
+% as it will spawn  10 batch jobs in the background and use the results recycling mechanism 
+% which routinely checks the saved results from the concurrent threads. 
+% Expect 7 days to finish the full customization (slurm/screen/tmux recommended), but you may
+% be able to obtain reasonable results for some of the target datasets after  48-72 hours. 
+% If you do not want to use results recycling, simply change n_check to 1e6, which corresponds to 
+% the routine interval for the recycling. This may possibly yield slower convergence or suboptimal results.
+% You can load the log file under the results folder with the script below after or during the customization.
 
 
 clear; clc; close all;

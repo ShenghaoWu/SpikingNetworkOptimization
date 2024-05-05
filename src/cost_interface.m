@@ -1,8 +1,11 @@
 function [result] = cost_interface(x,is_surrogate,fun)
-%Wrapper function which takes the parameter vector, converts it to a named table, and feed it to the cost function.
-%Input: x: vector of the network parameters;
+%% Wrapper function which takes the parameter vector, converts it to a named table, and feed it to the cost function.
+%   -Input
+%       x: [number of parameters], numeric parameter set for the simulation
 %		is_surrogate: 0 (don't run the short simulation for feasibility), 1 (run the short simulation)
-% 		%fun: the cost function
+% 		fun: function, the actual cost function wrapper (e.g. cost_func.m)
+%   -Output
+%       result: float, cost value corresponding to x.
 
 if length(x) == 8 % CBN
 	taudsynI=x(1);

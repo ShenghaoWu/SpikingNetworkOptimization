@@ -1,5 +1,15 @@
 function  save_statistics(stats_weights,paras_tmp,full_stats_tmp,surrogate_stats_tmp,execution_time_tmp,stats_filename)
-%Save the statistics, parameters, execution time for the log files 
+%% Append the statistics, parameters, execution time to the existing statistics log file. 
+%   -Input
+%     stats_weights: [6], weighting for each activity statistics
+%     paras_tmp: table, parameter set to append
+%     full_stats_tmp: table, activity statistics of the full simulation to append
+%     surrogate_stats_tmp, table, activity statistics of the surrogate simulation to append
+%     execution_time_tmp: table, running time for both short and full
+%     simulation
+%     stats_filename: string, name of the statistics logging file
+
+
 
 try
 	load(stats_filename);

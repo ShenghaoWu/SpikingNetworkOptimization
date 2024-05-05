@@ -1,17 +1,15 @@
 function SNOPS_short_demo(target_stats_name,simulator,parameter_range,max_iter,T,save_name,is_plot,varargin)
-
-% Description: SNOPS short demo function
+%% SNOPS short demo function. This script is similar to bayesian_optimization.m but incorporates printing and plotting functionality for the demonstration purpose in demo_short.m.
 %
-% Arguments:
-%
-%     target_stats_name    -- string; filename of the target activity statistics to customize network model to.  
-%     simulator -- function handle; the network model simulator.
-%     parameter_range  -- float [number of parameters, 2]; Lower and upper
+%   -Input
+%     target_stats_name: string; filename of the target activity statistics to customize network model to.  
+%     simulator: function; the network model simulator.
+%     parameter_range: [number of parameters, 2], Lower and upper
 %           bounds of the search range for the parameters.
-%     max_iter -- int; number of iterations to run SNOPS.
-%     T -- int; network model simulation length (in ms).
-%     save_name -- string; filename for the log files.
-%     is_plot -- int (0/1); if =1, plot the customization info. Otherwise
+%     max_iter: int, number of iterations to run SNOPS.
+%     T: int, network model simulation length (in ms).
+%     save_name: string, filename for the log files.
+%     is_plot: {0,1}, if =1, plot the customization info. Otherwise
 %           the info will be printed to the console.
 
 

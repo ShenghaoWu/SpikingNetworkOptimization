@@ -1,9 +1,21 @@
-function [x_train,y_train,y_feasibility,optimization_time] = bayesian_optimization_interaction2(func,optimization_opt,obj_configs)
-rng shuffle;
+function [x_train,y_train,y_feasibility,optimization_time] = bayesian_optimization_interaction(func,optimization_opt,obj_configs)
 %% Bayesian optimization while taking into account of parameter interactions (taui/taue and the determinant of the Jr matrix) for fitting GPs.
-%% Same input/output format as in bayesian_optimization.
+%   -Input
+% 		func: function, wrapper for the cost function
+%		optimization_opt: struct, configurations for the Bayesian optimization
+%		obj_configs: struct, configurations for the network simulation
+%
+%   -Output
+%		x_train: [number of iterations, number of params], trace of the
+%		parameter sets
+%       y_train: [number of iterations], trace of the cost
+%       y_feasibility: [number of iterations], trace of the feasibility
+%       constraints.
+%       optimization_time: [number of iterations], trace of the iteration
+%       time
 
-%initialization
+rng shuffle;
+%Initialization
 x_range=optimization_opt.x_range;
 epsilon=optimization_opt.epsilon;
 n_sample=optimization_opt.n_sample;

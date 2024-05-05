@@ -1,5 +1,16 @@
 function ParamChange=configure_params(x,Ne1,Ni1,dt,T,is_small)
-%Generate the parameter struct for SNN simulation
+%% Generate the parameter struct for SNN simulation
+%   -Input
+%      x: table, parameter sets for the simulation
+%      Ne1: int, number of E neurons in the recurrent layer per each dim
+%      (total number of E neurons is thus Ne1^2)
+%      Ni1: int, number of I neurons in the recurrent layer per each dim
+%      dt: int, simulation time step length
+%      T: int, simulation length
+%      is_small: {0,1}, if using a smaller network size compared to (Huang
+%      et al, 2019). Used for scaling the in-degree of network.
+%   -Output
+%      ParamChange: struct; configurations for the network simulation
 
 rng shuffle;
 Ntotal=Ne1*Ne1+Ni1*Ni1;

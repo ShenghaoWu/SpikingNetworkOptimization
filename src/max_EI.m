@@ -1,6 +1,18 @@
 function [x_hat,y_hat] = max_EI(gp_object,gp_object_feas,f_plus,epsilon,n_sample,x_range,n_local)
 %% Function for maximize the acquisition function
-%%% It will use random+local search to maximize the acquisition
+%% It will use random+local search to maximize the acquisition
+%   -Input
+%      gp_object: struct, fitted GP for the full cost function
+%      gp_object_feas: struct, fitted GP for the feasibility constraints
+%      f_plus: float, current best cost value
+%      epsilon: float, exploration-exploitation trade-off parameter
+%      n_sample: int, number of initial random samples to compute EI
+%      x_range: [number of parameters, 2], search range for SNOPS
+%      n_local: int, number of local optimizations
+
+%   -Output
+%      x_hat: [number of parameters], the parameter set that maximizes EI
+%      y_hat: float, the maximum of EI
 
 ndim=size(x_range,1);
 x_samples=rand(n_sample,ndim).*repmat((x_range(:,2)-x_range(:,1))', n_sample,1)+ repmat(x_range(:,1)', n_sample,1);

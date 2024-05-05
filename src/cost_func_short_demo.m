@@ -1,12 +1,14 @@
 function [objective] = cost_func_short_demo(x, is_surrogate, obj_configs, simulator)
-%Description: Compute the cost given a parameter set x, configurations, and a network. This is only intended as a demonstration.
-%simulator
-%Arguments:
-%       input_para --float, [number of parameters to customize]
-%       is_surrogat -- int (0/1). If feasibility constraint is needed
-%       obj_configs -- configuration struct for the customization.
-%       simulator -- function handel. Network simulator. See SBN.m
+%% Cost function for demo_short.m. Note that this function is similar to cost_func.m, with simplified functionality for demonstration purpose. 
+%   -Input
+%      x: table, parameter sets for the simulation
+%      is_surrogate: {0,1}, if use a short simulation to determine
+%      feasibility
+%      obj_configs: struct, configurations for the network simulation
+%      simulator: function, wrapper for the network simulation, corresponds to spatial_nn_simulation_weight.m in cost_func.m        
 
+%   -Output
+%      objective: float; cost of x
 
 
 %initialization

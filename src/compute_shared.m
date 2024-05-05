@@ -1,13 +1,13 @@
 function [percentshared, d_shared,normevals] = compute_shared(estParams, thresh, normalize)
 %% Extract the three population statistics from the estimated FA params
-%% Input
-%%      estParams: struct, results from fastfa
-%%      thresh: float [0,1]; thresh for computing dshared
-%%      normalize: {0,1}, if normalize the eigenspectrum (sum to 1)
-%% Output
-%%      percentshared: float; percent shared var
-%%      d_shared: int, dim of shared variance
-%%      normevals: [n_neuron], eigenspectrum
+%   -Input
+%      estParams: struct, results from fastfa
+%      thresh: float [0,1]; thresh for computing dshared
+%      normalize: {0,1}, if normalize the eigenspectrum (sum to 1)
+%   -Output
+%      percentshared: float; percent shared var
+%      d_shared: int, dim of shared variance
+%      normevals: [n_neuron], eigenspectrum
 
 L = estParams.L;
 Ph = estParams.Ph;

@@ -1,5 +1,18 @@
 function [base_name] = base_real(real_data_name,base_name,filename,top_n,sort_mode,stats_weights,is_sort)
-%%[Deprecated] Function for loading previously-evaluated simulations.
+%% Function for loading previously-evaluated simulations.
+
+%   Input
+%       - real_data_name: string, filename of the target statistics.
+%       - base_name: string, filename of the previously generated network
+%       simulations
+%       - filename: string, logging file name.
+%       - top_n: int, number of simulations of lowest cost to be selected
+%       - sort_mode: string, sorting order.
+%       - stats_weights: [6], weightings for each statistic.
+%       - is_sort: {0,1}, if sort or use random ordering.
+
+%   Output
+%       - base_name: string, filename of the previously generated network.
 
 
 try 
@@ -47,7 +60,6 @@ catch
 		surrogate_stats=surrogate_stats(I,:);
 		execution_time=execution_time(I,:);
 			
-
 		case 'random'
 		I=randperm(top_n);
 		paras=paras(I,:);

@@ -1,15 +1,15 @@
 function [fa_percentshared, fa_normevals, fa_dshared] = compute_pop_stats(sampling_inds, re, n_neuron, Tw, dim_method)
 %% Compute the population statistics of the given spike count matrix
-%% Input
-%%     sampling_inds: [number of samplings, number of sampling neurons],
-%%     re: [number of neurons, number of bins], spike count matrix
-%% 	   n_neuron: int, number of sampling neurons 
-%%	   Tw: int, spike count window size
-%%     dim_method: cross-validation method, see below for the different cv methods.
-%% Output
-%%      fa_percentshared: float; percent shared var
-%%      fa_normevals: [n_neuron], eigenspectrum
-%%      fa_dshared: int, dim of shared variance, can be float after averaging
+%   -Input
+%     sampling_inds: [number of samplings, number of sampling neurons],
+%     re: [number of neurons, number of bins], spike count matrix
+% 	   n_neuron: int, number of sampling neurons 
+%	   Tw: int, spike count window size
+%     dim_method: cross-validation method, see below for the different cv methods.
+%   -Output
+%      fa_percentshared: float; percent shared var
+%      fa_normevals: [n_neuron], eigenspectrum
+%      fa_dshared: int, dim of shared variance, can be float after averaging
 
 
 n_samples=size(sampling_inds,1);

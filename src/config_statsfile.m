@@ -1,5 +1,11 @@
 function filename=config_statsfile(filename)
-%initialize the statistics log file
+%% Initialize an empty statistics logging file
+%   -Input
+%      filename: string, name of the logging file
+%    
+%   -Output
+%      filename: string, name of the logging file
+
 
 try 
 	load(filename);

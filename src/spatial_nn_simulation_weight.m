@@ -1,4 +1,6 @@
 function [Wrr1,Wrf1,s1]=spatial_nn_simulation_weight(varargin)
+%% Simulation script for the SBN/CBN. Authored by Chengcheng Huang
+
 % RF2D3layer(option, ParamChange)
 
 % param is a struc w/ fields: Ne, Ni, Nx, Jx, Jr, Kx, Kr, 

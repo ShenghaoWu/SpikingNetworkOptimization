@@ -1,13 +1,12 @@
 function [true_statistics] = compute_target_statistics(target_train_name,obj_configs)
+%% Compute the activity statistics of the target spike trains.
+%   -Input
+%     obj_configs: string; filename of the spike trains to customize network model to.  
+%     obj_configs: struct, configurations for customization.
 
-% Description: Compute the activity statistics of the target spike trains.
-%
-% Input:
-%
-%     target_train_name    -- string; filename of the spike trains to customize network model to.  
-%     obj_configs -- configuration struct; configurations for customization.
-% Output
-%      true_statistics: table containing the six activity statistics     
+%   -Output
+%      true_statistics: table, the six activity statistics of the target data
+
 
 load(strcat('./data/',target_train_name,'.mat'));
 n_sampling = obj_configs.n_sampling;

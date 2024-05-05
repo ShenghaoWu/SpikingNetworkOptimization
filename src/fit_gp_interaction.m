@@ -1,4 +1,31 @@
 function [gprMdl,gprMdl_feas,f_plus,epsilon_scaled]=fit_gp_interaction(x_train,y_train,y_feasibility,epsilon,gprMdl,current_feas,f_plus,epsilon_scaled,is_log) 
+%% Fit the GP models on the evaluated parameter sets, for both the full cost and the feasibility constraints. Accounting for parameter interactions for the timescale and connectivity strength parameters.
+%   -Input
+%      x_train: [number of iterations, number of params], trace of the
+%		parameter sets
+%      y_train: [number of iterations], trace of the cost
+%      y_feasibility: [number of iterations], trace of the feasibility
+%       constraints.
+%      epsilon: float, exploration-exploitation trade-off parameter
+%      gprMdl: struct, current GP model for the full cost (if the current
+%       parameter set is infeasible, will skip fitting and use the current
+%       model).
+%      current_feas: {0,1}, if the current parameter set is feasible
+%      f_plus: float, current best cost value
+%      epsilon_scaled: float, exploration-exploitation trade-off parameter
+%      scaled by the observed std.
+%      is_log: {0,1}, if apply log-transform to y.
+
+
+%   -Output
+%      gprMdl: struct, fitted GP for the full cost function
+%      gprMdl_feas: struct, fitted GP for the feasibility constraints
+%      f_plus: float, current best cost value
+%      epsilon_scaled: float, exploration-exploitation trade-off parameter
+
+
+
+
 if is_log
     y_train=log(y_train);
 end

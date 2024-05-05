@@ -1,9 +1,13 @@
 function [Wrr,Wrf]=gen_weights(Ne,Ni,Nx,sigmaRX,sigmaRR,Prr,Prx,dimension)
-% Generate the connectivity graph for the SNN
-% sigmaRR=[sigmaee, sigmaei; sigmaie, sigmaii]; 2x2 
-% sigmaRX=[sigmaeX; sigmaiX]; 
-% dimension='1D' or '2D'
-
+%% Generate the connectivity graph for the SNN
+%   -Input
+%       Ne/Ni/Nx: number of neurons for the recurrent E, recurrent I, and
+%       ffwd E neuron.
+%       sigmaRR=[sigmaee, sigmaei; sigmaie, sigmaii]; 2x2 
+%       sigmaRX=[sigmaeX; sigmaiX]; 
+%       dimension='1D' or '2D'
+%   -Output
+%       Wrr,Wrf: connectivity matrices for the recurrent and ffwd layers.
 % sort post syn index 
 
 switch dimension
