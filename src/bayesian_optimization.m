@@ -25,6 +25,7 @@ n_sample=optimization_opt.n_sample;
 n_local=optimization_opt.n_local;
 max_time=optimization_opt.max_time;
 max_iter=optimization_opt.max_iter;
+cost_stopping_thres=optimization_opt.cost_stopping_thres;
 save_name=optimization_opt.save_name;
 std_tol=optimization_opt.std_tol;
 max_cost_eval=optimization_opt.max_cost_eval;
@@ -123,7 +124,7 @@ save(save_name,'x_train','y_train','y_feasibility','optimization_time','incumben
 
 is_better=0;
 for kk=1:max_iter
-    if sum(optimization_time)<=max_time
+    if sum(optimization_time)<=max_time | nanmin(y_train) < cost_stopping_thres
         t_init=tic;
         if mod (kk, n_check)==0
         	% Results recyling function. For every n_check, it will load the saved model parameters and statistics from the concurrent threads

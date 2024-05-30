@@ -68,7 +68,7 @@ base_name = []; % if not empty, use the base network simulation samples as the i
 top_n=50; % number of initial seed samples for the base file
 sort_mode='random'; % sorting method for the base file
 is_sort=0; % if sort the base file
-
+cost_stopping_thres=0.1; %threshold of the cost below which to stop SNOPS.
 
 %assign values from varagin
 for cnt = 1: length(varargin)/2
@@ -80,7 +80,7 @@ opt={};
 obj_configs={};
 optimization_opt={};
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%Assigning options for SNN%%%%%%%%%%%%%%%%%%%%%%%
 opt.save=is_save; 
 opt.CompCorr=CompCorr;
 opt.Layer1only=Layer1only; 
@@ -89,7 +89,7 @@ opt.plotPopR=plotPopR;
 opt.fixW=fixW; 
 opt.verbose=verbose;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%Assigning options for cost%%%%%%%%%%%%%%%%%%%%%%%
 obj_configs.opt=opt;
 obj_configs.filename=filename;
 obj_configs.root=root;
@@ -117,7 +117,7 @@ obj_configs.is_spatial=is_spatial;
 obj_configs.dim_method = dim_method;
 obj_configs.stats_weights = stats_weights;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%Assigning options for optimization%%%%%%%%%%%%%%%%%%%%%%%
 optimization_opt.x_range=x_range;
 optimization_opt.epsilon=epsilon;
 optimization_opt.n_sample=n_sample;
@@ -134,10 +134,11 @@ optimization_opt.base_name = strcat(save_root,base_name,'.mat');
 optimization_opt.top_n=top_n;
 optimization_opt.sort_mode=sort_mode;
 optimization_opt.is_sort=is_sort;
+optimization_opt.cost_stopping_thres=cost_stopping_thres;
 
   
 
-%configure save filenames
+%configure log filenames
 filename=obj_configs.filename; %filename contains jobid!
 results_name=strcat(obj_configs.save_root,filename,'.mat');
 obj_configs.real_data_name = strcat(root,real_data_name,'.mat');
