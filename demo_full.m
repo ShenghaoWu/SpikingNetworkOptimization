@@ -20,7 +20,7 @@ addpath('src')
 
 for i = 1:10
     [obj_configs,optimization_opt]=generate_config('is_spatial', 1,... % =1 using the SBN, =0 using the CBN.
-                                                   'max_time', 3600*7,... % max running time (in seconds).
+                                                   'max_time', 3600*7*24,... % max running time (in seconds).
                                                    'n_check', 10,... % results recycling checking interval. if changed to 1e6, turn off recycling.
                                                    'min_cost_eval', 2,... %number of min evaluations for intensification, the larger the more stable final results are.
                                                    'max_cost_eval', 3,... %number of max evaluations for intensification, the larger the more stable final results are.
