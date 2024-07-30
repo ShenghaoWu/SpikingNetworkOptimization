@@ -26,7 +26,7 @@ for i = 1:10
                                                    'max_cost_eval', 3,... %number of max evaluations for intensification, the larger the more stable final results are.
                                                    'x_range',[1,25; 1,25; 0,0.25; 0,0.25; 0,0.25; -150,0; 0,150; -150,0; 0,150; 0,150; 0,150],... % search region, in [n_params, 2]. For the SBN, this  correspond to: taudsynI, taudsynE, mean_sigmaRRIs, mean_sigmaRREs, mean_sigmaRXs, JrEI, JrIE, JrII, JrEE, JrEX, JrIX
                                                    'real_data_name', strcat('demo_sbn_simu_',string(i)),... % name pattern for the target stats, must be placed under /data.
-                                                   'filename', strcat('demo_recy_bo_output',string(i))); % name pattern for the logging files, will be placed under /results. Note: filename must end with "_bo_output" for the recyling mechanism to identify all concurrent files
+                                                   'filename', strcat('demo_recy_bo_output_',string(i))); % name pattern for the logging files, will be placed under /results. Note: filename must end with "_bo_output_" for the recyling mechanism to identify all concurrent files
 
     optimization_algo=1; % Use Bayesian optimization as the backbone
     eval(strcat(obj_configs.filename,'=batch(@()run_bayes(obj_configs, optimization_opt, optimization_algo), 0, {});'));
