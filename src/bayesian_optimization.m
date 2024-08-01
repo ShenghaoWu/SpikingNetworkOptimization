@@ -129,7 +129,7 @@ for kk=1:max_iter
         if mod (kk, n_check)==0
         	% Results recyling function. For every n_check, it will load the saved model parameters and statistics from the concurrent threads
         	%  and compute their costs based on the target statistics of the current thread, if encounters a low-cost parameter, make it incumbent.
-            [x_star,y_star,is_better]=check_threads(x_train,y_train,obj_configs.root,obj_configs.stats_filename,obj_configs.true_statistics); 
+            [x_star,y_star,is_better]=check_threads(x_train,y_train,obj_configs.save_root,obj_configs.stats_filename,obj_configs.true_statistics); 
         end
         if is_better
         	% If encounters a potentially optimal parameter set from other threads, accept it.
