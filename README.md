@@ -1,7 +1,10 @@
 SNOPS (Spiking Network Optimization using Population Statistics) 
 =================
-Code accompanying the manuscript _Automated customization of large-scale spiking network models to neuronal population activity_    
-Shenghao Wu, Chengcheng Huang, Adam Snyder, Matthew Smith*, Brent Doiron*, and Byron Yu*
+Code accompanying the manuscript
+
+“Automated customization of large-scale spiking network models to neuronal population activity”
+by S. Wu, C. Huang, A. C. Synder, M. A. Smith*, B. Doiron*, B. M. Yu*.
+Nat Comput Sci, vol. 4, 2024, pp. 690-705. [[Link]](https://www.nature.com/articles/s43588-024-00688-3)
 
 SNOPS customizes the parameters of a spiking network model to reproduce the population-wide covariability of large-scale neuronal recordings. 
 
